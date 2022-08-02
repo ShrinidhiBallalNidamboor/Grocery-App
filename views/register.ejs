@@ -1,0 +1,51 @@
+<%- include('partials/header') %>
+
+  <div class="container mt-5">
+    <h1>Register</h1>
+  
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card">
+          <div class="card-body">
+  
+            <!-- Makes POST request to /register route -->
+            <form action="/register" method="POST">
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" name="username">
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" name="password">
+              </div>
+			  <div class="form-group">
+				<label for="Role">Role</label>
+				<select name="Role" class="form-control">
+					<option name="Role" value="User">User</option>
+					<option name="Role" value="Farmer">Farmer</option>
+					<option name="Role" value="Shop Owner">Shop Owner</option>
+					<option name="Role" value="Delivery Partner">Delivery Partner</option>
+				</select>
+              </div>
+              <button type="submit" class="btn btn-dark">Register</button>
+            </form>
+  
+          </div>
+        </div>
+      </div>
+	  
+	  <form action="/auth/google" method="POST">
+		<label for="Role" style="margin-left: 20px;">Role: </label>
+		<select name="Role" class="form-control" style="width: 350px; margin-left: 15px;">
+			<option name="Role" value="User">User</option>
+			<option name="Role" value="Farmer">Farmer</option>
+			<option name="Role" value="Shop Owner">Shop Owner</option>
+			<option name="Role" value="Delivery Partner">Delivery Partner</option>
+		</select>
+		
+	  </form>
+  
+    </div>
+  </div>
+  <br><br>
+  <%- include('partials/footer') %>

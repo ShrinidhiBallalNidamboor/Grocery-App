@@ -1,0 +1,73 @@
+<%- include('partials/header') %>
+
+  <div class="container mt-5">
+    <h1>Your order history</h1>
+  
+    <table class="cart-table">
+      <!-- <thead class="cart-table-head"> -->
+        <tr class="table-head-row">
+          <th class="product-image">Serial no</th>
+          <th class="product-name">Order details</th>
+          <th class="product-price">Amount</th>
+          <th class="product-name">Address</th>
+          <th class="product-name">Phone</th>
+          <th class="product-name">Expected delivery date</th>
+          <th class="product-quantity">Status</th>
+        </tr>
+      <!-- </thead> -->
+      <!-- <tbody> -->
+      
+        <%for(let i=0;i!=orders.length;i++){%>
+        <tr class="table-body-row" style="text-align: center;">
+          <td><%-i+1%></td>
+          <td>
+            <div class="accordion" id="accordionExample">
+						  <div class="card single-accordion">
+						    <div class="card-header" id="headingOne">
+						      <h5 class="mb-0">
+						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne-<%-i%>" aria-expanded="true" aria-controls="collapseOne-<%-i%>" style="width: 400px">
+						          Details
+						        </button>
+						      </h5>
+						    </div>
+
+						    <div id="collapseOne-<%-i%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="width: 400px">
+						      <div class="card-body" style="width: 400px">
+						        <div class="billing-address-form" style="width: 500px; text-align: left;">
+                      <% for(let k=0;k!=userOrders[i].length;k++){ %>
+                        <p><%-userOrders[i][k].ProductName%>-<%-details[i+1][k].quantity%> </p>
+                      <% } %> 
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+
+        
+          </td>
+          <td><%-orders[i].Amount%></td>
+          <td><%-orders[i].Address%></td>
+          <td><%-orders[i].Phone%></td>
+          <td><%-orders[i].deliveryDate.getDate()%>/<%-orders[i].deliveryDate.getMonth()+1%>/<%-orders[i].deliveryDate.getFullYear()%></td>
+          <% if(status[i]==0||status[i]==1){%> 
+          <td class="product-quantity">
+            <p><b>Yet to be pickedup</b></p>
+          </td>
+          <%}else if(status[i]==2){%>
+            <td class="product-quantity">
+              <p><b>On its way to be delivered</b></p>
+            </td>
+          <% }else{ %> 
+            <td class="product-quantity">
+              <p><b style="color: rgb(25, 222, 25);">Delivered</b></p>
+            </td>
+          <% } %> 
+        </tr>
+        <%}%>
+      <!-- </tbody> -->
+    </table>
+
+  </div>
+  <br><br>
+  <%- include('partials/footer') %>
+	

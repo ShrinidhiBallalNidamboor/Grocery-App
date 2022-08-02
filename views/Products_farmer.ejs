@@ -1,0 +1,42 @@
+<%- include('partials/header') %>
+
+	<!-- cart -->
+	<div class="cart-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-md-12">
+					<div class="cart-table-wrap">
+						<table class="cart-table">
+							<thead class="cart-table-head">
+								<tr class="table-head-row">
+									<th class="product-remove"></th>
+									<th class="product-image">Product Image</th>
+									<th class="product-name">Product Name</th>
+									<th class="product-measure">Unit Of Measure</th>
+									<th class="product-price">Price Of Each Unit</th>
+									<th class="product-description">Description</th>
+									<th class="product-update">Update</th>
+								</tr>
+							</thead>
+							<tbody>
+                                <%for(let i=0;i!=product.length;i++){%>
+								<tr class="table-body-row" style="text-align: center;">
+									<td class="product-remove"><a href="delete/<%-product[i]._id%>"><i class="far fa-window-close"></i></a></td>
+									<th class="product-image"><img src="<%-product[i].Picture%>" alt="" style="width:100px; height:100px;"></th>
+									<th class="product-name"><%-product[i].ProductName%></th>
+									<th class="product-measure"><%-product[i].UnitOfMeasure%></th>
+									<th class="product-price"><%-product[i].UnitOfPrice%></th>
+									<th class="product-description"><%-product[i].Description%></th>
+									<th class="product-update"><a href="Add_products_farmer/<%-product[i]._id%>" class="btn btn-dark">Update</a></th>
+								</tr>
+                                <%}%>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end cart -->
+
+	<%- include('partials/footer') %>

@@ -1,0 +1,155 @@
+<%- include('partials/header') %>
+	<!-- features list section -->
+	<div class="list-section pt-80 pb-80">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+					<div class="list-box d-flex align-items-center">
+						<div class="list-icon">
+							<i class="fas fa-shipping-fast"></i>
+						</div>
+						<div class="content">
+							<h3>Free Shipping</h3>
+							<p>When order over Rs 1000</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+					<div class="list-box d-flex align-items-center">
+						<div class="list-icon">
+							<i class="fas fa-phone-volume"></i>
+						</div>
+						<div class="content">
+							<h3>24/7 Support</h3>
+							<p>Get support all day</p>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-6">
+					<div class="list-box d-flex justify-content-start align-items-center">
+						<div class="list-icon">
+							<i class="fas fa-sync"></i>
+						</div>
+						<div class="content">
+							<h3>Farm</h3>
+							<p>Fruits and Vegetables are directly from the farms.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- end features list section -->
+
+	<!-- product section -->
+	<%if(loggedIn!=2){%>
+		<div class="product-section mt-150 mb-150">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-8 offset-lg-2 text-center">
+						<div class="section-title">	
+							<h3><span class="orange-text">Our</span> Products</h3>
+							<p>All grocery items available.</p>
+						</div>
+					</div>
+				</div>
+				<div class="row product-lists">
+					<%for(let i=0;i!=product1.length&&i!=2;i++){%>
+						<div class="col-lg-4 col-md-6 text-center">
+							<div class="single-product-item">
+								<div class="product-image">
+									<a href="single-product.html"><img src="<%-product1[i].Picture%>" alt=""></a>
+								</div>
+								<h3><%-product1[i].ProductName%></h3>
+								<p class="product-price"><%if(product1[i].UnitOfMeasure=="weight"){%><span>Per Kg</span><%}%><%if(product1[i].UnitOfMeasure=="volume"){%><span>Per Litre</span><%}%> Rs <%-product1[i].UnitOfPrice%> </p>
+							</div>
+						</div>
+
+					<%}%>
+					<%for(let i=0;i!=product2.length&&i!=1;i++){%>
+						<div class="col-lg-4 col-md-6 text-center">
+							<div class="single-product-item">
+								<div class="product-image">
+									<a href="single-product.html"><img src="<%-product2[i].Picture%>" alt=""></a>
+								</div>
+								<h3><%-product2[i].ProductName%></h3>
+								<p class="product-price"><%if(product2[i].UnitOfMeasure=="weight"){%><span>Per Kg</span><%}%><%if(product2[i].UnitOfMeasure=="volume"){%><span>Per Litre</span><%}%> Rs <%-product2[i].UnitOfPrice%> </p>
+							</div>
+						</div>
+					<%}%>
+				</div>
+			</div>
+		</div>
+	<%}%>
+	<!-- end product section -->
+
+	<!-- testimonail-section -->
+	<div class="testimonail-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1 text-center">
+					<div class="testimonial-sliders">
+						<%for(let i=0;i!=info1.length;i++){%>
+							<div class="single-testimonial-slider">
+								<div class="client-avater">
+									<img src="images/<%-info1[i].imagename%>" alt="">
+								</div>
+								<div class="client-meta">
+									<h3><%-info1[i].Name%><span>Local Farmer</span></h3>
+									<p class="testimonial-body">
+										<%-info1[i].about%>
+									</p>
+									<div class="last-icon">
+										<i class="fas fa-quote-right"></i>
+									</div>
+								</div>
+							</div>
+						<%}%>
+						<%for(let i=0;i!=info2.length;i++){%>
+								<div class="single-testimonial-slider">
+									<div class="client-avater">
+										<img src="images/<%-info2[i].imagename%>" alt="">
+									</div>
+									<div class="client-meta">
+										<h3><%-info2[i].Name%><span>Local Shop Keeper</span></h3>
+										<p class="testimonial-body">
+											<%-info2[i].about%>
+										</p>
+										<div class="last-icon">
+											<i class="fas fa-quote-right"></i>
+										</div>
+									</div>
+								</div>
+						<%}%>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end testimonail-section -->
+	
+	<!-- advertisement section -->
+	<div class="abt-section mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-bg">
+						<a href="https://www.youtube.com/watch?v=0K-C9bh-IsI" class="video-play-btn popup-youtube"><i class="fas fa-play"></i></a>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-12">
+					<div class="abt-text">
+						<p class="top-sub">Since Year 2022</p>
+						<h2>We are <span class="orange-text">Groceries</span></h2>
+						<p>Know about this application, through this video. Contact us in case of any issues and queries.</p>
+						<a href="/about" class="boxed-btn mt-4" role="button">know more</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end advertisement section -->
+<%- include('partials/footer') %>
+	

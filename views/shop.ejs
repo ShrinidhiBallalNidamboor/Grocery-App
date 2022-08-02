@@ -1,0 +1,72 @@
+<%- include('partials/header') %>
+	<!-- products --> 
+	
+	<% if(msg===false) {%>
+		<div style="height: 200px;">
+			<h5 style="text-align:center;">
+				No results found for your search
+			</h5>
+		</div>
+	<% }else{ %>  
+	<div class="product-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+                <div class="col-md-12">
+                    <div class="product-filters">
+                        <ul>
+                            <li class="active" data-filter="*">All</li>
+                            <li data-filter=".Home-items">Home-items</li>
+                            <li data-filter=".Sports">Sports</li>
+                            <li data-filter=".Toys">Toys</li>
+							<li data-filter=".Eateries">Eateries</li>
+							<li data-filter=".Stationary">Stationary</li>
+							<li data-filter=".Personal-care">Personal-care</li>
+							<li data-filter=".Fruits">Fruits</li>
+							<li data-filter=".Vegetables">Vegetables</li>
+						</ul>
+                    </div>
+                </div>
+            </div>
+
+				<div class="row product-lists">
+					<%for(let i=0;i!=product1.length;i++){%>
+						<div class="col-lg-4 col-md-6 text-center <%-product1[i].Category%>">
+							<div class="single-product-item">
+								<div class="product-image">
+									<a href="single-product.html"><img src="<%-product1[i].Picture%>" alt=""></a>
+								</div>
+								<h3><%-product1[i].ProductName%></h3>
+								<p class="product-price"><%if(product1[i].UnitOfMeasure=="weight"){%><span>Per Kg</span><%}%><%if(product1[i].UnitOfMeasure=="volume"){%><span>Per Litre</span><%}%> Rs <%-product1[i].UnitOfPrice%> </p>
+								<%if(p1[i]==1){%>
+								<a href="cart/addfarm/<%-product1[i]._id%>" class="cart-btn" role="button"><i class="fas fa-shopping-cart"></i>Add to Cart</a>
+								<%} else{%>
+									<p>Added to cart!!</p>
+								<%}%>
+								<a class="btn btn-dark" href="/Review/<%-product1[i]._id%>">Review</a>
+							</div>
+						</div>
+
+					<%}%>
+					<%for(let i=0;i!=product2.length;i++){%>
+						<div class="col-lg-4 col-md-6 text-center <%-product2[i].Category%>">
+							<div class="single-product-item">
+								<div class="product-image">
+									<a href="single-product.html"><img src="<%-product2[i].Picture%>" alt=""></a>
+								</div>
+								<h3><%-product2[i].ProductName%></h3>
+								<p class="product-price"><%if(product2[i].UnitOfMeasure=="weight"){%><span>Per Kg</span><%}%><%if(product2[i].UnitOfMeasure=="volume"){%><span>Per Litre</span><%}%> Rs <%-product2[i].UnitOfPrice%> </p>
+								<%if(p2[i]==1){%>
+								<a href="cart/addshop/<%-product2[i]._id%>" class="cart-btn" role="button"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+								<%} else{%>
+								<p>Added to cart!!</p>
+								<%}%>
+								<a class="btn btn-dark" href="/Review/<%-product2[i]._id%>">Review</a>
+							</div>
+						</div>
+					<%}%>
+				</div>
+		</div>
+	</div>
+	<!-- end products -->
+	<% } %> 
+	<%- include('partials/footer') %>

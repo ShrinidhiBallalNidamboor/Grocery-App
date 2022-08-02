@@ -1,0 +1,110 @@
+
+<!-- footer -->
+<div class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box about-widget">
+                    <h2 class="widget-title">About us</h2>
+                    <p>We are web-developers and Computer Science and Engineering students at National Institute of Technology, Karnataka, Surathkal</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box get-in-touch">
+                    <h2 class="widget-title">Get in Touch</h2>
+                    <ul>
+                        <li>103, Deepa Sunny Apartments, <br>Kodialgutthu, Mangaluru-575003</li>
+                        <li>ballalshrinidhi@gamil.com</li>
+                        <li>0824-8618217332</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box pages">
+                    <h2 class="widget-title">Pages</h2>
+                    <ul>
+                        <li><a href="/" role="button">Home</a></li>
+                        <li><a href="/about" role="button">About</a></li>
+                        <%if(loggedIn==2||loggedIn==3||loggedIn==4){%>
+                            <li><a href="/details" role="button">Update Details</a></li>
+                            <%if(loggedIn==2){%>
+                                <li><a href="/Products_farmer" role="button">Products</a></li>
+                                <li><a href="/Add_products_farmer" role="button">Add Products</a></li>
+                                <li><a href="/OrderList" role="button">Orders</a></li>
+                            <%}%>
+                            <%if(loggedIn==3){%>
+                                <li><a href="/Products_shopkeeper" role="button">Products</a></li>
+                                <li><a href="/Add_products_shopkeeper" role="button">Add Products</a></li>
+                                <li><a href="/OrderList" role="button">Orders</a></li>
+                            <%}%>
+                            <%if(loggedIn==4){%>
+                                <li><a href="/deliveryList" role="button">Deliver</a></li>
+                            <%}%>
+                        <%}%>
+                        <%if(loggedIn!=2&&loggedIn!=3&&loggedIn!=4){%>
+                            <li><a href="/shop" role="button">Shop</a></li>
+                            <%if(loggedIn==1){%>
+                            <li><a href="/orderHistory" role="button">Order History</a></li>
+                            <%}%>
+                        <%}%>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="footer-box subscribe">
+                    <h2 class="widget-title">Subscribe</h2>
+                    <p>Type the emails.</p>
+                    <form action="/gmail" method="POST">
+                        <input class="Email" placeholder="Mail" name="email" style="height: auto;">
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+
+<!-- copyright -->
+<div class="copyright">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <p>Copyrights &copy; 2022 - <a href="https://github.com/ShrinidhiBallalNidamboor">Shrinidhi Ballal Nidamboor</a>,  All Rights Reserved.</p>
+            </div>
+            <div class="col-lg-6 text-right col-md-12">
+                <div class="social-icons">
+                    <ul>
+                        <li><a href="https://www.facebook.com/shrinidhi.ballal.1" target="_blank"><i class="fab fa-facebook-f"></i></a></li>
+                        <li><a href="https://www.instagram.com/shrinidhinidamboor/" target="_blank"><i class="fab fa-instagram"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end footer -->
+
+<!-- jquery -->
+<script src="assets/js/jquery-1.11.3.min.js"></script>
+<!-- bootstrap -->
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<!-- count down -->
+<script src="assets/js/jquery.countdown.js"></script>
+<!-- isotope -->
+<script src="assets/js/jquery.isotope-3.0.6.min.js"></script>
+<!-- waypoints -->
+<script src="assets/js/waypoints.js"></script>
+<!-- owl carousel -->
+<script src="assets/js/owl.carousel.min.js"></script>
+<!-- magnific popup -->
+<script src="assets/js/jquery.magnific-popup.min.js"></script>
+<!-- mean menu -->
+<script src="assets/js/jquery.meanmenu.min.js"></script>
+<!-- sticker js -->
+<script src="assets/js/sticker.js"></script>
+<!-- main js -->
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

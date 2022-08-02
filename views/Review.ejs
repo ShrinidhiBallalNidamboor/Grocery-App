@@ -1,0 +1,69 @@
+<%- include('partials/header') %>
+
+  <div class="container mt-5">
+    <h1>Give Your Review</h1>
+  
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card">
+          <div class="card-body">
+  
+            <!-- Makes POST request to /register route -->
+            <table class="cart-table">
+                <thead class="cart-table-head">
+                  <tr class="table-head-row">
+                    <th class="product-image">Product Imge</th>
+                    <th class="product-name">Product Name</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-body-row" style="text-align: center;">
+                    <td class="product-image"><img src="<%-product.Picture%>" alt=""></td>
+                    <td class="product-name"><%-product.ProductName%></td>
+                  </tr>
+                </tbody>
+              </table>
+              <br>
+            <form action="/Review" method="POST">
+                <label>Give Review: </label>
+                <div class="form-group">
+                  <textarea type="text" class="form-control" name="Description" id="bill" cols="30" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-dark">Submit</button>
+                <input type="text" name="address" value="<%-product._id%>" style="visibility: collapse; height: 0px;"><br>
+                <input type="number" name="types" value="<%-i%>" style="visibility: collapse; height: 0px;"><br>
+            </form>
+
+            <% if(review.length==0){ %> 
+              <h3>No reviews yet</h3>
+            <% }else{ %> 
+              <div class="accordion" id="accordionExample">
+              <div class="card single-accordion">
+              <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne-<%-i%>" aria-expanded="true" aria-controls="collapseOne-<%-i%>" style="width: 400px">
+                    See other reviews
+                  </button>
+                </h5>
+              </div>
+              <div id="collapseOne-<%-i%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="width: 400px">
+                <div class="card-body" style="width: 400px">
+                  <div class="billing-address-form" style="width: 500px; text-align: left;">
+                    <% for(var i=0;i<review.length;i++){ %> 
+                      <h6>Review <%-i+1%>:<%-review[i].review %> </h6>
+                    <% } %> 
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+              
+            <% } %> 
+  
+          </div>
+        </div>
+      </div>  
+    </div>
+  </div>
+  <br><br>
+<%- include('partials/footer') %>

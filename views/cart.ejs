@@ -1,0 +1,94 @@
+<%- include('partials/header') %>
+
+	<!-- cart -->
+	<% if(cart1.length===0 && cart2.length===0) {%>
+		<p></p>
+		<p></p>
+		<div style="height: 200px;">
+			<h2 style="text-align:center;">CART IS EMPTY!!SHOP AND ADD ITEMS</h2> 
+		</div>
+		<p></p>
+		<p></p>
+	<% }else{ %> 
+	<div class="cart-section mt-150 mb-150">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-8 col-md-12">
+					<div class="cart-table-wrap">
+						<table class="cart-table">
+							<thead class="cart-table-head">
+								<tr class="table-head-row">
+									<th class="product-remove"></th>
+									<th class="product-image">Product Image</th>
+									<th class="product-name">Name</th>
+									<th class="product-price">Price</th>
+									<th class="product-quantity">Quantity</th>
+								</tr>
+							</thead>
+							<tbody>
+								<form action="/saveCart" method="post">
+								<%for(let i=0;i!=cart1.length;i++){%>
+								<tr class="table-body-row" style="text-align: center;">
+									<td class="product-remove"><a href="cart/deletefarm/<%-cart1[i].ID2%>"><i class="far fa-window-close"></i></a></td>
+									<td class="product-image"><img src=<%-cart1[i].picture%> alt=""></td>
+									<td class="product-name"><%-cart1[i].name%></td>
+									<td class="product-price"><%-cart1[i].price%></td>
+									<td class="product-quantity"><input type="number" name="<%-cart1[i].ID2%>" value="<%-cart1[i].quantity%>"></td>
+								</tr>
+								<%}%>
+							</tbody>
+							<tbody>
+								
+								<%for(let i=0;i!=cart2.length;i++){%>
+								<tr class="table-body-row">
+									<td class="product-remove"><a href="cart/deleteshop/<%-cart2[i].ID2%>"><i class="far fa-window-close"></i></a></td>
+									<td class="product-image"><img src=<%-cart2[i].picture%> alt=""></td>
+									<td class="product-name"><%-cart2[i].name%></td>
+									<td class="product-price"><%-cart2[i].price%></td>
+									<td class="product-quantity"><input type="number" name="<%-cart2[i].ID2%>" value="<%-cart2[i].quantity%>"></td>
+								</tr>
+								<%}%>
+							
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<div class="col-lg-4">
+					<div class="total-section">
+						<table class="total-table">
+							<thead class="total-table-head">
+								<tr class="table-total-row">
+									<th>Total</th>
+									<th>Price</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr class="total-data">
+									<td><strong>Subtotal:</strong></td>
+									<td>Rs <%-cost%></td>
+								</tr>
+								<tr class="total-data">
+									<td><strong>Shipping:</strong></td>
+									<td>Rs 50</td>
+								</tr>
+								<tr class="total-data">
+									<td><strong>Total:</strong></td>
+									<td>Rs <%-cost+50%></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="cart-buttons">
+							<button type="submit" class="btn btn-dark" name="save" value="1">Save cart and continue Shopping</button>
+							<p>      </p>
+							<button type="submit" class="btn btn-dark" name="save" value="2">Check Out</button>
+						</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end cart -->
+	<% } %> 
+	<%- include('partials/footer') %>

@@ -1,0 +1,75 @@
+<%- include('partials/header') %>
+
+  <div class="container mt-5">
+  
+    <table class="cart-table">
+      <thead class="cart-table-head">
+        <tr class="table-head-row">
+          <th class="product-image">Product Imge</th>
+          <th class="product-name">Product Name</th>
+          <th class="product-quantity">Quantity</th>
+          <th class="product-status">Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <form action="/pickedUp" method="post">
+        <%for(let i=0;i!=products.length;i++){%>
+        <%if(loggedIn==3){%>
+        <tr class="table-body-row" style="text-align: center;">
+          <%for(let j=0;j!=product2.length;j++){%>
+            <%if(product2[j]._id.equals(products[i][0])){%>
+              <%for(let k=0;k!=ordDetails.length;k++){%>
+                    <%if(ordDetails[k].ID3.equals(products[i][1])&&ordDetails[k].ID1!=null){%>
+                      <td class="product-image" style="padding: 10px;"><img src="<%-product2[j].Picture%>" alt=""></td>
+                      <td class="product-name"><%-product2[j].ProductName%></td>
+                      <td class="product-quantity"><%-ordDetails[k].quantity%></td>
+                      <% if(ordDetails[k].status==false) {%> 
+                        <td class="product-status">
+                          <button type="submit" name="Status" value="<%-ordDetails[k]._id %>" class="btn btn-dark">Click if Picked Up</button>
+                        </td>
+                      <% }else{ %> 
+                          <td class="product-status">
+                            <p><b style="color: rgb(25, 222, 25);">Picked Up</b></p>
+                          </td>
+                      <% } %>
+                    <%}%>
+              <%}%>
+            <%}%>
+          <%}%>
+          </tr>
+          <%}%>
+
+          <%if(loggedIn==2){%>
+            <tr class="table-body-row" style="text-align: center;">
+              <%for(let j=0;j!=product1.length;j++){%>
+                <%if(product1[j]._id.equals(products[i][0])){%>
+                  <%for(let k=0;k!=ordDetails.length;k++){%>
+                    <%if(ordDetails[k].ID3.equals(products[i][1])&&ordDetails[k].ID2!=null){%>
+                          <td class="product-image" style="padding: 10px;"><img src="<%-product1[j].Picture%>" alt=""></td>
+                          <td class="product-name"><%-product1[j].ProductName%></td>
+                          <td class="product-quantity"><%-ordDetails[k].quantity%></td>
+                          <% if(ordDetails[k].status==false) {%> 
+                            <td class="product-status">
+                              <button type="submit" name="Status" value="<%-ordDetails[k]._id %>" class="btn btn-dark">Click if Picked Up</button>
+                            </td>
+                          <% }else{ %> 
+                              <td class="product-status">
+                                <p><b style="color: rgb(25, 222, 25);">Picked Up</b></p>
+                              </td>
+                          <% } %>
+                    <%}%>
+                  <%}%>
+                <%}%>
+              <%}%>
+            </tr>
+            <%}%>
+
+        <%}%>
+      </tbody>
+    </table>
+  </form>
+
+  </div>
+  <br><br>
+  <%- include('partials/footer') %>
+	

@@ -1,0 +1,92 @@
+<%- include('partials/header') %>
+
+  <div class="container mt-5">
+    <h1>Details</h1>
+  
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card">
+          <div class="card-body">
+  
+          
+            <!-- Makes POST request to /register route -->
+            <form action="/details" method="POST" enctype="multipart/form-data">
+              <%if(found==0){%>
+              <div class="form-group">
+                <label for="email">Name</label>
+                <input type="text" class="form-control" name="username">
+              </div>
+              <div class="form-group">
+                <label for="password">Address</label>
+                <input type="text" class="form-control" name="Address">
+              </div>
+              <div class="form-group">
+                <label for="password">TIN Number</label>
+                <input type="number" class="form-control" name="TIN">
+              </div>
+              <div class="form-group">
+                <label for="password">Email</label>
+                <input type="email" class="form-control" name="email">
+              </div>
+              <div class="form-group">
+                <label for="password">Adhaar Number</label>
+                <input type="number" class="form-control" name="Adhaar">
+              </div>
+              <div class="form-group">
+                <label for="Select Image:">Select Image:</label><br>
+                <input type="file" name="image" class="btn btn-dark" style="background-color: #ce563f;" required>
+              </div>
+              <label for="password">About Yourself</label>
+              <div class="form-group">
+                <textarea type="text" class="form-control" name="self" id="bill" cols="30" rows="10"></textarea>
+              </div>
+              <%}%>
+              <%if(found==1){%>
+                <div class="form-group">
+                  <label for="email">Name</label>
+                  <input type="text" class="form-control" name="username" value="<%-array[0]%>">
+                </div>
+                <div class="form-group">
+                  <label for="password">Address</label>
+                  <input type="text" class="form-control" name="Address" value="<%-array[1]%>">
+                </div>
+                <div class="form-group">
+                  <label for="password">TIN Number</label>
+                  <input type="number" class="form-control" name="TIN" value="<%-array[2]%>">
+                </div>
+                <div class="form-group">
+                  <label for="password">Email</label>
+                  <input type="email" class="form-control" name="email" value="<%-array[3]%>">
+                </div>
+                <div class="form-group">
+                  <label for="password">Adhaar Number</label>
+                  <input type="number" class="form-control" name="Adhaar" value="<%-array[4]%>">
+                </div>
+                <div class="form-group">
+                  <%if(array[5]==null){%>
+                    <label for="Select Image:">Select Image:</label><br>
+                  <%}%>
+                  <%if(array[5]!=null){%>
+                    <label for="Select Image:">Already selected!</label><br>
+                    <img src="images/<%-array[5]%>" alt="" style="height:50px; width:50px;">
+                    <input type="file" name="image" class="btn btn-dark" style="background-color: #ce563f;"></input>
+                  <%}%>
+                  <%if(array[5]==null){%>
+                    <input type="file" name="image" class="btn btn-dark" style="background-color: #ce563f;" required></input>
+                  <%}%>
+                </div>
+                <label for="password">About Yourself</label>
+                <div class="form-group">
+                  <textarea type="text" class="form-control" name="self" id="bill" cols="30" rows="10"><%-array[6]%></textarea>
+                </div>
+                <%}%>
+              <button type="submit" class="btn btn-dark">Save Changes</button>
+            </form>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <%- include('partials/footer') %>

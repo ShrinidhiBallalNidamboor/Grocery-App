@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Responsive Bootstrap4 Shop Template, Created by Imran Hossain from https://imransdesign.com/">
+
+	<!-- title -->
+	<title>Groceries</title>
+
+	<!-- favicon -->
+	<link rel="shortcut icon" type="image/png" href="assets/img/favicon.png">
+	<!-- google font -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+	<!-- fontawesome -->
+	<link rel="stylesheet" href="assets/css/all.min.css">
+	<!-- bootstrap -->
+	<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+	<!-- owl carousel -->
+	<link rel="stylesheet" href="assets/css/owl.carousel.css">
+	<!-- magnific popup -->
+	<link rel="stylesheet" href="assets/css/magnific-popup.css">
+	<!-- animate css -->
+	<link rel="stylesheet" href="assets/css/animate.css">
+	<!-- mean menu css -->
+	<link rel="stylesheet" href="assets/css/meanmenu.min.css">
+	<!-- main style -->
+	<link rel="stylesheet" href="assets/css/main.css">
+	<!-- responsive -->
+	<link rel="stylesheet" href="assets/css/responsive.css">
+	<link rel="stylesheet" href="assets/css/responsive.css">
+  	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+  	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  	<link rel="stylesheet" href="css/bootstrap-social.css">
+  	<link rel="stylesheet" href="css/styles.css">
+
+</head>
+<body>
+	
+	<!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+	
+	<!-- header -->
+	<div class="top-header-area" id="sticker">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 col-sm-12 text-center">
+					<div class="main-menu-wrap">
+						<!-- logo -->
+						<div class="site-logo">
+							<a href="/" role="button">
+								<img src="assets/img/logo.png" alt="" style="width: 120px;">
+							</a>
+						</div>
+						<!-- logo -->
+
+						<!-- menu start -->
+						<nav class="main-menu">
+							<ul>
+                <%if(page==1){%>
+								<li class="current-list-item"><a href="/" role="button">Home</a></li>
+                <%}%>
+                <%if(page!=1){%>
+                  <li><a href="/" role="button">Home</a></li>
+                <%}%>
+
+                <%if(page==2){%>
+                  <li class="current-list-item"><a href="/about" role="button">About</a></li>
+                <%}%>
+                <%if(page!=2){%>
+                    <li><a href="/about" role="button">About</a></li>
+                <%}%>
+
+                <%if(page==3||page==7||page==6){%>
+                  <li class="current-list-item"><a href="/shop" role="button">Shop</a></li>
+                <%}%>
+
+                <%if(loggedIn==1||loggedIn==0){%>
+                <%if(page!=3&&page!=7&&page!=6){%>
+                  <li><a href="/shop" role="button">Shop</a>
+                  </li>
+                <%}%>
+								<%}%>
+
+								<%if(loggedIn==0){%>
+                  <%if(page==4){%>
+                    <li class="current-list-item">
+                      <a href="/register" role="button">Register</a>
+                    </li>
+                  <%}%>
+                  <%if(page!=4){%>
+                    <li>
+                      <a href="/register" role="button">Register</a>
+                    </li>
+                  <%}%>
+                  <%if(page==5){%>
+                    <li class="current-list-item">
+                      <a href="/login" role="button">Login</a>
+                    </li>
+                  <%}%>
+                  <%if(page!=5){%>
+                    <li>
+                      <a href="/login" role="button">Login</a>
+                    </li>
+                  <%}%>
+								<%}%>
+
+				<%if(loggedIn==1){%>
+					<%if(page==14){%>
+						<li class="current-list-item">
+							<a href="/orderHistory" role="button">Order History</a>
+						</li>
+					<%}%>	
+					<%if(page!=14){%>
+						<li>
+							<a href="/orderHistory" role="button">Order History</a>
+						</li>
+					<%}%>
+				<%}%>
+                <%if(loggedIn==2){%>
+                  <%if(page==8){%>
+                    <li class="current-list-item">
+                      <a href="/details" role="button">Update Details</a>
+                    </li>
+                  <%}%>
+                  <%if(page!=8){%>
+                    <li>
+                      <a href="/details" role="button">Update Details</a>
+                    </li>
+                  <%}%>
+				  <%if(page==9){%>
+                    <li class="current-list-item">
+                      <a href="/Products_farmer" role="button">Products</a>
+                    </li>
+                  <%}%>
+                  <%if(page!=9){%>
+                    <li>
+                      <a href="/Products_farmer" role="button">Products</a>
+                    </li>
+                  <%}%>
+				  <%if(page==10){%>
+                    <li class="current-list-item">
+                      <a href="/Add_products_farmer" role="button">Add Products</a>
+                    </li>
+                  <%}%>
+                  <%if(page!=10){%>
+                    <li>
+                      <a href="/Add_products_farmer" role="button">Add Products</a>
+                    </li>
+                  <%}%>
+
+				  <%if(page==12){%>
+					<li class="current-list-item">
+					  <a href="/OrderList" role="button">Orders</a>
+					</li>
+				  <%}%>
+				  <%if(page!=12){%>
+					<li>
+					  <a href="/OrderList" role="button">Orders</a>
+					</li>
+				  <%}%>
+				<%}%>
+				<%if(loggedIn==3){%>
+					<%if(page==8){%>
+					  <li class="current-list-item">
+						<a href="/details" role="button">Update Details</a>
+					  </li>
+					<%}%>
+					<%if(page!=8){%>
+					  <li>
+						<a href="/details" role="button">Update Details</a>
+					  </li>
+					<%}%>
+					<%if(page==9){%>
+					  <li class="current-list-item">
+						<a href="/Products_shopkeeper" role="button">Products</a>
+					  </li>
+					<%}%>
+					<%if(page!=9){%>
+					  <li>
+						<a href="/Products_shopkeeper" role="button">Products</a>
+					  </li>
+					<%}%>
+					<%if(page==10){%>
+					  <li class="current-list-item">
+						<a href="/Add_products_shopkeeper" role="button">Add Products</a>
+					  </li>
+					<%}%>
+					<%if(page!=10){%>
+					  <li>
+						<a href="/Add_products_shopkeeper" role="button">Add Products</a>
+					  </li>
+					<%}%>
+
+					<%if(page==12){%>
+						<li class="current-list-item">
+						  <a href="/OrderList" role="button">Orders</a>
+						</li>
+					  <%}%>
+					  <%if(page!=12){%>
+						<li>
+						  <a href="/OrderList" role="button">Orders</a>
+						</li>
+					  <%}%>
+				  <%}%>
+
+				  <%if(loggedIn==4){%>
+					<%if(page==8){%>
+					  <li class="current-list-item">
+						<a href="/details" role="button">Update Details</a>
+					  </li>
+					<%}%>
+					<%if(page!=8){%>
+					  <li>
+						<a href="/details" role="button">Update Details</a>
+					  </li>
+					<%}%>
+					<%if(page==11){%>
+					  <li class="current-list-item">
+						<a href="/deliveryList" role="button">Delivery List</a>
+					  </li>
+					<%}%>
+					<%if(page!=11){%>
+					  <li>
+						<a href="/deliveryList" role="button">Delivery List</a>
+					  </li>
+					<%}%>
+				  <%}%>
+
+					<li>
+						<div class="header-icons">
+							<%if(loggedIn==0||loggedIn==1){%>
+								<a class="shopping-cart" href="/cart" role="button"><i class="fas fa-shopping-cart"></i></a>
+							<%}%>
+							<%if(loggedIn==1){%>
+							<a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+							<%}%>
+							<%if(loggedIn){%>
+								<a class="btn btn-dark" href="/logout" role="button">Log Out</a>
+							<%}%>
+						</div>
+					</li>
+							</ul>
+						</nav>
+						<a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+						<div class="mobile-menu"></div>
+						<!-- menu end -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end header -->
+	
+	<!-- search area -->
+	<div class="search-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<span class="close-btn"><i class="fas fa-window-close"></i></span>
+					<div class="search-bar">
+						<div class="search-bar-tablecell">
+							<form action="/searchShop" method="post">
+							<h3>Search For:</h3>
+							<input type="text" name="searchKey" value="" placeholder="Keywords">
+							<button type="submit">Search <i class="fas fa-search"></i></button>
+						</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end search area -->
+
+	<!-- hero area -->
+	<div class="hero-area hero-bg">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-9 offset-lg-2 text-center">
+					<div class="hero-text">
+						<div class="hero-text-tablecell">
+              <%if(page==1){%>
+							<p class="subtitle">Shop Now!</p>
+							<h1>Groceries Online</h1>
+              <div class="hero-btns">
+								<a href="/shop" class="boxed-btn" role="button">Grocery Collection</a>
+							</div>
+              <%}%>
+              <%if(page==2){%>
+                  <p class="subtitle">We sale groceries</p>
+                  <h1>About Us</h1>
+              <%}%>
+              <%if(page==3){%>
+                <p class="subtitle">Fresh and Organic</p>
+                <h1>Shop</h1>
+              <%}%>
+              <%if(page==5){%>
+                <h1>Login</h1>
+              <%}%>
+              <%if(page==4){%>
+                <h1>Register</h1>
+              <%}%>
+              <%if(page==6){%>
+                <p class="subtitle">Fresh and Organic</p>
+					<h1>Cart</h1>
+              <%}%>
+              <%if(page==7){%>
+                <p class="subtitle">Fresh and Organic</p>
+					<h1>Check Out Product</h1>
+              <%}%>
+              <%if(page==8){%>
+					<h1>Update Details</h1>
+              <%}%>
+			  <%if(page==9){%>
+				<p class="subtitle">All Products you sell</p>
+				<h1>Products</h1>
+  			  <%}%>
+			  <%if(page==10){%>
+				<h1>Add Products</h1>
+			  <%}%>
+			  <%if(page==11){%>
+				<h1>Delivery List</h1>
+			  <%}%>
+			  <%if(page==12){%>
+				<h1>Orders</h1>
+			  <%}%>
+			  <%if(page==13){%>
+				<h1>Review</h1>
+			  <%}%>
+			  <%if(page==14){%>
+				<h1>Order History</h1>
+			  <%}%>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end hero area -->

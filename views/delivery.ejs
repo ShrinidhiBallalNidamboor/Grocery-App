@@ -1,0 +1,82 @@
+<%- include('partials/header') %>
+
+  <div class="container mt-5">
+    <h1>Deliveries To be Done</h1>
+  
+    <table class="cart-table">
+      <!-- <thead class="cart-table-head"> -->
+        <tr class="table-head-row">
+          <th class="product-image">Serial no</th>
+          <th class="product-name">Customer Name</th>
+          <th class="product-price">Amount</th>
+          <th class="product-name">Address</th>
+          <th class="product-name">Phone</th>
+          <th class="product-name">Expected delivery date</th>
+          <th class="product-name">Delivery Details</th>
+          <th class="product-quantity">Status</th>
+        </tr>
+      <!-- </thead> -->
+      <!-- <tbody> -->
+        <form action="/delivered" method="post">
+        <%for(let i=0;i!=orders.length;i++){%>
+        <tr class="table-body-row" style="text-align: center;">
+          <td><%-i+1%></td>
+          <td><%-orders[i].Name%></td>
+          <td><%-orders[i].Amount%></td>
+          <td><%-orders[i].Address%></td>
+          <td><%-orders[i].Phone%></td>
+          <td><%-orders[i].deliveryDate.getDate()%>/<%-orders[i].deliveryDate.getMonth()+1%>/<%-orders[i].deliveryDate.getFullYear()%></td>
+          <td>
+            <div class="accordion" id="accordionExample">
+						  <div class="card single-accordion">
+						    <div class="card-header" id="headingOne">
+						      <h5 class="mb-0">
+						        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne-<%-i%>" aria-expanded="true" aria-controls="collapseOne-<%-i%>" style="width: 400px">
+						          Details
+						        </button>
+						      </h5>
+						    </div>
+
+						    <div id="collapseOne-<%-i%>" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample" style="width: 400px">
+						      <div class="card-body" style="width: 400px">
+						        <div class="billing-address-form" style="width: 500px; text-align: left;">
+                        <%for(let j=0;j!=products.length;j++){%>
+                          <%if(products[j][3].equals(orders[i]._id)){%>
+                            <p><b>Product Name: <%-products[j][0]%></b></p>
+                            <p><b>Producer Name: <%-products[j][1]%></b></p>
+                            <p><b>Address: <%-products[j][2]%></b></p>
+                          <%}%>
+                        <%}%>
+						        </div>
+						      </div>
+						    </div>
+						  </div>
+						</div>
+          </td>
+          <% if(Myorders[i].status=="0") {%> 
+          <td class="product-quantity">
+            <p><b>Pickup not yet completed</b></p>
+          </td>
+          <% }else if(Myorders[i].status=="1"){ %> 
+            <td class="product-quantity">
+              <button type="submit" name="<%-Myorders[i]._id %>" value="1" class="btn btn-dark">Click if PickedUp</button>
+            </td>
+          <% }else if(Myorders[i].status=="2"){ %> 
+            <td class="product-quantity">
+              <button type="submit" name="<%-Myorders[i]._id %>" value="2" class="btn btn-dark">Click if delivered</button>
+            </td>
+          <% }else{ %> 
+            <td class="product-quantity">
+              <p><b style="color: rgb(25, 222, 25);">Delivered</b></p>
+            </td>
+          <% } %> 
+        </tr>
+        <%}%>
+      <!-- </tbody> -->
+    </table>
+  </form>
+
+  </div>
+  <br><br>
+  <%- include('partials/footer') %>
+	

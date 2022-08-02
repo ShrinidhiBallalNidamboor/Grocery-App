@@ -1,0 +1,97 @@
+<%- include('partials/header') %>
+
+  <div class="container mt-5">
+    <h1>Add a New Product</h1>
+  
+    <div class="row">
+      <div class="col-sm-8">
+        <div class="card">
+          <div class="card-body">
+  
+            <!-- Makes POST request to /register route -->
+            <form action="/Add_products_farmer" method="POST" enctype="multipart/form-data">
+              <%if(found==0){%>
+              <div class="form-group">
+                <label for="Select Image:">Picture:</label><br>
+                <input type="file" name="image" class="btn btn-dark" style="background-color: #ce563f;" required>
+              </div>
+              <div class="form-group">
+                <label for="Name">Product Name:</label>
+                <input type="text" class="form-control" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="unit">Unit Of Measure:</label>
+                <select name="unit" class="form-control" style="width: 350px;" required>
+                  <option name="unit" value="weight">Weight</option>
+                  <option name="unit" value="volume">Volume</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="price">Unit Of Price:</label>
+                <input type="number" class="form-control" name="Price" required>
+              </div>
+              <label for="Description">Description</label>
+              <div class="form-group">
+                <textarea type="text" class="form-control" name="Description" id="bill" cols="30" rows="10" required></textarea>
+              </div>
+              <div class="form-group">
+                <label for="category">Choose a category:</label>
+                  <select id="category" name="category">
+                    <option value="Fruits">Fruits</option>
+                    <option value="Vegetables">Vegetables</option>
+                  </select>
+              </div>
+              <%}%>
+
+              <%if(found==1){%>
+                <div class="form-group">
+                  <label for="Select Image:">Already Selected!</label><br>
+                  <img src="<%-array[4]%>" alt="" style="height:50px; width:50px;">
+                  <input type="file" name="image" class="btn btn-dark" style="background-color: #ce563f;">
+                </div>
+                <div class="form-group">
+                  <label for="Name">Product Name:</label>
+                  <input type="text" class="form-control" name="name" value="<%-array[0]%>" required>
+                </div>
+                <div class="form-group">
+                  <label for="unit">Unit Of Measure:</label>
+                  <%if(array[1]=="weight"){%>
+                  <select name="unit" class="form-control" style="width: 350px;" value="<%-array[1]%>" required>
+                    <option name="unit" value="weight">Weight</option>
+                    <option name="unit" value="volume">Volume</option>
+                  </select>
+                  <%}%>
+                  <%if(array[1]!="weight"){%>
+                  <select name="unit" class="form-control" style="width: 350px;" value="<%-array[1]%>" required>
+                    <option name="unit" value="volume">Volume</option>
+                    <option name="unit" value="weight">Weight</option>
+                  </select>
+                  <%}%>
+                </div>
+                <div class="form-group">
+                  <label for="price">Unit Of Price:</label>
+                  <input type="number" class="form-control" name="Price" value="<%-array[2]%>" required>
+                </div>
+                <label for="Description">Description</label>
+                <div class="form-group">
+                  <textarea type="text" class="form-control" name="Description" id="bill" cols="30" rows="10" required><%-array[3]%></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="category">Choose a category:</label>
+                    <select id="category" name="category">
+                      <option value="Fruits">Fruits</option>
+                      <option value="Vegetables">Vegetables</option>
+                    </select>
+                </div>
+                <%}%>
+                <input type="text" name="address" value="<%-address%>" style="visibility: collapse; height: 0px;"><br>
+              <button type="submit" class="btn btn-dark">Add</button>
+            </form>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br><br>
+  <%- include('partials/footer') %>
