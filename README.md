@@ -1,3 +1,3 @@
-# Authentication-Secrets
-
-To inspect the code for the module, you can clone this repository and use git checkout to see the completed code for each lesson. If you don't remember how to do this, be sure to revisit the Git and GitHub module in the course.
+# Online_Retail_Shop
+Retail platform for farmers and shop owners to sell their products online. This project is based on node js and mongo db for the backend and html, ejs, CSS , and javascript for the frontend. 
+Hosted The code in the heroku server - https://desolate-bayou-28960.herokuapp.com/
