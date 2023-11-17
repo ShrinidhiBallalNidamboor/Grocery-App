@@ -2,7 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
-const axios = require('axios')
+const crypto = require('crypto');
+const axios = require('axios');
 
 const app = express();
 app.use(express.static("public"));
@@ -27,6 +28,23 @@ const userSchema = new mongoose.Schema({
 });
 
 const User = mongoose.model('User', userSchema);
+const secretKey = 'yourSecretKey';
+
+// Function to encrypt a variable
+function encrypt(text) {
+  const cipher = crypto.createCipher('aes-256-cbc', secretKey);
+  let encrypted = cipher.update(text, 'utf-8', 'hex');
+  encrypted += cipher.final('hex');
+  return encrypted;
+}
+
+// Function to decrypt an encrypted variable
+function decrypt(encryptedText) {
+  const decipher = crypto.createDecipher('aes-256-cbc', secretKey);
+  let decrypted = decipher.update(encryptedText, 'hex', 'utf-8');
+  decrypted += decipher.final('utf-8');
+  return decrypted;
+}
 
 // Enable parsing of JSON bodies
 app.use(bodyParser.json());
@@ -74,16 +92,17 @@ app.post('/login', async (req, res) => {
   }
 
   // Generate and return an access token
-  const accessToken = jwt.sign({ username:username, role:user.role }, 'your-secret-key', { expiresIn: '1h' });
+  const accessToken = encrypt(jwt.sign({ username:username, role:user.role }, 'your-secret-key', { expiresIn: '1h' }));
+  
   try {
     const tokenObject = {
       accessToken: accessToken
     };
     // Convert the object to a JSON string
-    const jsonToken = JSON.stringify(tokenObject);
+    const jsonTemporalToken = JSON.stringify(tokenObject);
     // Make a POST request to another server
     if(url_back != 'http://localhost:4000/'){
-      const response = await axios.post(url_back, jsonToken);
+      const response = await axios.post(url_back, jsonTemporalToken);
       // Process the response from the other server
       const responseData = response.data;
       res.status(200).json({ success: true, data: responseData });
@@ -95,6 +114,12 @@ app.post('/login', async (req, res) => {
     console.error('Error:', error.message);
   }
   res.redirect("/");
+});
+
+app.post('/getToken', async (req, res) => {
+  const jsonTemporalToken = req.body
+  const jsonToken = decrypt(jsonTemporalToken)
+  res.json(jsonToken);
 });
 
 app.post('/verify', async (req, res) => {
